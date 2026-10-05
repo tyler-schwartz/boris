@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+# Resolve the installed symlink before locating the adjacent runtime.
+exec python3 -c 'import os, sys; script = os.path.join(os.path.dirname(os.path.realpath(sys.argv[1])), "lib", "boris.py"); os.execv(sys.executable, [sys.executable, script, *sys.argv[2:]])' "$0" "$@"
